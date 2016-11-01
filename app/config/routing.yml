@@ -1,0 +1,4 @@
+xml:
+    resource: "@AbtBundle/Controller/"
+    type:     annotation
+    prefix:   /

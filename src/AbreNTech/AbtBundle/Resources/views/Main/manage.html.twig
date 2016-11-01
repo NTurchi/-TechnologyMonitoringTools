@@ -1,0 +1,78 @@
+{% extends '@Abt/base.html.twig' %}
+
+{% block flashbag %}
+    {% for notice in app.session.flashbag.get('notice') %}
+        <div class="flashbag col-md-5 col-md-offset-3" style="margin-top: 100px; margin-bottom: -75px;">
+            <p class="alert alert-success">{{ notice }}</p>
+        </div>
+    {% endfor %}
+
+    {% for warning in app.session.flashbag.get('warning') %}
+        <div class="flashbag col-md-5 col-md-offset-3" style="margin-top: 100px; margin-bottom: -75px;">
+            <p class="alert alert-danger">{{ warning }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row text-center">
+        <h3 class="manage-title">{{ title }}</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-1">
+            <div class="col-md-offset-6">
+            <table class="table">
+                <tr>
+                    <th class="text-center">Type</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul class="text-center pull-left list-group">
+                            <li class="list-group-item"><a href="{{ path('manage', {"type" : 1}) }}">URL</a></li>
+                            <li class="list-group-item"><a href="{{ path('manage', {"type" : 2}) }}">XML</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle drop-marg" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Catégories
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    {% for category in categories %}
+                        <li><a href="{{ path('manage', {"type" : 3, "category" : category.id}) }}">{{ category.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <a href="{{ path('manageCategory') }}" class="btn btn-primary gestion-cate">Gérer les Catégories</a>
+        </div>
+
+        <div class="col-md-8 col-md-offset-2">
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Categorie</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                {% for link in links %}
+                <tr>
+                    <td>{{ link.name }}</td>
+                    <td>{{ link.type.name }}</td>
+                    <td>{{ link.category.name }}</td>
+                    <td class="text-center">
+                        <a href="{{ path('modifyLink', { "id" : link.id }) }}" class="btn btn-primary">Modifier</a>
+                        <a title="supprimer" class="btn btn-danger btn-del pull-right" href="{{ path('delete', { "id" : link.id, "type": 1 }) }}">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

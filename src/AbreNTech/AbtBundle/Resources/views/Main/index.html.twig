@@ -1,0 +1,58 @@
+{% extends '@Abt/base.html.twig' %}
+
+{% block flashbag %}
+    {% for notice in app.session.flashbag.get('notice') %}
+        <div class="flashbag col-md-5 col-md-offset-3" style="margin-top: 100px;">
+            <p class="alert alert-success">{{ notice }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-2 text-center">
+            <table class="table">
+                <tr>
+                    <th class="text-center">Categorie</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul class="text-center pull-left list-group">
+                            {% for category in categories %}
+                                <li class="list-group-item"><a href="{{ path('showcategory', {'id': category.id }) }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+            <a class="btn btn-success add-btn" href="{{ path('addLink') }}">Ajouter un lien</a>
+        </div>
+
+        <div class="col-md-6 col-md-offset-2">
+            <img src="{{ asset('bundles/framework/images/logo_epsi.jpg') }}" alt="Logo EPSI" class="img-rounded index-epsi center-block">
+            <h1 class="title_index">
+                Application de veille technologique
+            </h1>
+        </div>
+    </div>
+
+
+
+
+   {# <div class="row">
+        <div class="col-md-3">
+            
+            {% for link in links %}
+                <a href="{{ path('showlink', {'id': link.id }) }}" class="btn btn-primary">{{ link.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="col-md-4 pull-right">
+            <div class="add-link">
+                <a href="{{ path('addLink') }}" class="btn btn-success">Ajouter un nouveau lien</a>
+            </div>
+        </div>
+    </div> #}
+
+
+{% endblock %}

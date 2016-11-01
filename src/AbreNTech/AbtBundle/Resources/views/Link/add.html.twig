@@ -1,0 +1,44 @@
+{% extends '@Abt/base.html.twig' %}
+{% form_theme form "bootstrap_3_layout.html.twig" %}
+
+{% block body %}
+    {{ form(form) }}
+
+{% endblock %}
+
+{% block js %}
+<script>
+$(function(){
+	$("#link_type").parent().show();
+
+	$("#link_type").change(function(){
+		var $type = $(this).val();
+
+		console.log($type);
+
+		if ($type == 1) {
+		    $("#link_name").parent().fadeIn(200);
+		    
+		    $('#link_linkstr').parent().fadeIn(300);
+		        
+		    $('#link_description').parent().fadeIn(400);
+		    
+		    $('#link_category').parent().fadeIn(500);
+
+		    $('#link_add').parent().fadeIn(600); // bouton
+		}
+		else if($type == 2){
+			$("#link_name").parent().fadeOut();
+		    $('#link_category , #link_add').parent().fadeIn(200);
+		    $('#link_description').parent().fadeOut();
+		    $('#link_add').parent().fadeIn(300); //bouton
+		}
+	
+	});
+	$("#link_type").trigger('change');
+});
+
+
+
+</script>
+{% endblock %}

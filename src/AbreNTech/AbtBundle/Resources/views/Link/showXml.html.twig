@@ -1,0 +1,54 @@
+{% extends '@Abt/base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="text-center">{{ link.name }}</h3>
+            <h5 class="text-center">{{ link.description }}</h5>
+        </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 20px; margin-top: 20px;">
+        <div class="col-md-8">
+            <nav>
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    {% for i in 1..nbrpage %}
+                        <li><a href="{{ path('showlink', {'id': app.request.get('id'), 'page': i}) }}">{{ i }}</a></li>
+                    {% endfor %}
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                </tr>
+                {% for item in items %}
+                <tr>
+                    <th style="width: 700px; text-align: justify; padding-right: 50px; vertical-align: middle">
+                        <h3><a href="{{ item.link }}">{{ item.title }}</a></h3>
+                    </th>
+                    <td>
+                        <p class="description">{{ item.description | raw }}</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

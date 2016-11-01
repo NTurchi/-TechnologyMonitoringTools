@@ -1,0 +1,47 @@
+{% extends '@Abt/base.html.twig' %}
+
+{% block flashbag %}
+    {% for notice in app.session.flashbag.get('notice') %}
+        <div class="flashbag col-md-5 col-md-offset-3" style="margin-top: 100px; margin-bottom: -75px;">
+            <p class="alert alert-success">{{ notice }}</p>
+        </div>
+    {% endfor %}
+
+    {% for warning in app.session.flashbag.get('warning') %}
+        <div class="flashbag col-md-5 col-md-offset-3" style="margin-top: 100px; margin-bottom: -75px;">
+            <p class="alert alert-danger">{{ warning }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="row text-center">
+        <h3 class="manage-title">{{ title }}</h3>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="{{ path('addCategory') }}" class="btn btn-success">Ajouter</a>
+        </div>
+        <div class="col-md-8 col-md-offset-2 ">
+            <table class="table">
+                <tr>
+                    <th>Nom</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td class="text-center">
+                            <a href="{{ path('modifyCategory', {'id': category.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a title="supprimer" class="btn btn-danger btn-del" href="{{ path('delete', { "id" : category.id, "type" : 2 }) }}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
