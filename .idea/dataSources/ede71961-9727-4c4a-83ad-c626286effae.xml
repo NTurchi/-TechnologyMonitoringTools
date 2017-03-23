@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - abreNtech@127.0.0.1">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="abreNtech">
+      <Visible>1</Visible>
+    </schema>
+    <table id="3" parent="2" name="CATEGORY"/>
+    <table id="4" parent="2" name="LINK"/>
+    <table id="5" parent="2" name="TYPE"/>
+    <column id="6" parent="3" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="7" parent="3" name="name">
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="8" parent="3" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="9" parent="4" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="10" parent="4" name="type_id">
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="11" parent="4" name="category_id">
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="12" parent="4" name="name">
+      <DataType>varchar(25)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="13" parent="4" name="description">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="14" parent="4" name="linkstr">
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="15" parent="4" name="IDX_39744512469DE2">
+      <ColNames>category_id</ColNames>
+    </index>
+    <index id="16" parent="4" name="IDX_397445C54C8C93">
+      <ColNames>type_id</ColNames>
+    </index>
+    <key id="17" parent="4" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="18" parent="4" name="FK_39744512469DE2">
+      <ColNames>category_id</ColNames>
+      <RefTableName>CATEGORY</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="19" parent="4" name="FK_397445C54C8C93">
+      <ColNames>type_id</ColNames>
+      <RefTableName>TYPE</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="20" parent="5" name="id">
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="21" parent="5" name="name">
+      <DataType>varchar(30)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="22" parent="5" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

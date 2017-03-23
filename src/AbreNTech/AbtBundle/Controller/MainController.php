@@ -2,8 +2,8 @@
 
 namespace AbreNTech\AbtBundle\Controller;
 
-use Proxies\__CG__\AbreNTech\AbtBundle\Entity\Category;
-use Proxies\__CG__\AbreNTech\AbtBundle\Entity\Type;
+use AbreNTech\AbtBundle\Entity\Category;
+use AbreNTech\AbtBundle\Entity\Type;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AbreNTech\AbtBundle\Entity\Link;
 use AbreNTech\AbtBundle\Form\Type\LinkType;
